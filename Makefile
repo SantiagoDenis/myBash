@@ -3,6 +3,9 @@ CC=gcc
 CPPFLAGS=`pkg-config --cflags glib-2.0`
 CFLAGS=-std=gnu11 -Wall -Wextra -Wbad-function-cast -Wstrict-prototypes -Wmissing-declarations -Wmissing-prototypes -Wno-unused-parameter -Werror -Werror=vla -g -pedantic
 LDFLAGS=`pkg-config --libs glib-2.0`
+CFLAGS += $(shell pkg-config --cflags glib-2.0)
+LDLIBS += $(shell pkg-config --libs glib-2.0)
+
 
 # Propagar entorno a make en tests/
 export CC CPPFLAGS CFLAGS LDFLAGS
