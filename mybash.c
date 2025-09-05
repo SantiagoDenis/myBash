@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -13,6 +14,7 @@ static void show_prompt(void) {
     fflush (stdout);
 }
 
+
 int main(int argc, char *argv[]) {
     pipeline pipe;
     Parser input;
@@ -23,14 +25,15 @@ int main(int argc, char *argv[]) {
         show_prompt();
         pipe = parse_pipeline(input);
 
-        /* Hay que salir luego de ejecutar? */
-        quit = parser_at_eof(input);
-        /*
-         * COMPLETAR
-         *
-         */
+        if(pipe==NULL){
+            quit = parser_at_eof(input);
+            continue;
+        } 
+        else {
+         execute_pipeline(pipe);
+         pipeline_destroy(pipe);
+       }
     }
     parser_destroy(input); input = NULL;
     return EXIT_SUCCESS;
 }
-

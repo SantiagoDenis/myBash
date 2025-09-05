@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "builtin.h": "c",
+        "stdio.h": "c",
+        "types.h": "c"
+    }
+}
